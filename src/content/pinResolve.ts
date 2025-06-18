@@ -54,7 +54,7 @@ if (!match) {
 } else {
   const locatorStr = decodeURIComponent(match[1]);
   const locator = decodeLocator(locatorStr);
-  document.addEventListener('DOMContentLoaded', async () => {
+  const resolve = async () => {
     let el: HTMLElement | null = null;
     if (locator.type === 'offset') {
       window.scrollTo({ top: locator.offset, behavior: 'smooth' });
@@ -71,5 +71,11 @@ if (!match) {
       showToast('Spot not found');
     }
     history.replaceState(null, '', location.pathname + location.search);
-  });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', resolve);
+  } else {
+    resolve();
+  }
 }

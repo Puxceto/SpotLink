@@ -17,10 +17,11 @@ function showToast(msg: string) {
   setTimeout(() => div.remove(), 2000);
 }
 
-function highlight(el: HTMLElement) {
+async function highlight(el: HTMLElement) {
+  const { highlightColor = '#ff0' } = await chrome.storage.sync.get('highlightColor');
   el.animate(
     [
-      { boxShadow: '0 0 0 4px #ff0' },
+      { boxShadow: `0 0 0 4px ${highlightColor}` },
       { boxShadow: '0 0 0 4px transparent' },
     ],
     { duration: 800 }
@@ -65,7 +66,7 @@ if (!match) {
       }
     }
     if (el) {
-      highlight(el);
+      await highlight(el);
     } else if (locator.type !== 'offset') {
       showToast('Spot not found');
     }

@@ -12,14 +12,16 @@
   },
   "action": {
     "default_title": "SpotLink",
-    "default_icon": "icons/spot.svg"
+    "default_icon": "icons/spot.svg",
+    "default_popup": "src/ui/popup.html"
   },
+  "options_page": "src/ui/options.html",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["src/content/pinCreate.ts", "src/content/pinResolve.ts"]
     }
   ],
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs"],
   "host_permissions": ["<all_urls>"]
 }

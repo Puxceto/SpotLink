@@ -71,7 +71,7 @@ export async function createPin() {
 }
 
 function handleKey(e: KeyboardEvent) {
-  if (e.altKey && e.key.toLowerCase() === 'p') {
+  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'p') {
     createPin();
   }
 }

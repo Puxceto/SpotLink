@@ -39,7 +39,7 @@ test('pin link scrolls to spot', async () => {
     window.scrollTo(0, t.getBoundingClientRect().top + window.scrollY);
     return Math.round(window.scrollY);
   });
-  await page.keyboard.press('Alt+KeyP');
+  await page.keyboard.press('Control+Shift+KeyP');
   await page.waitForTimeout(200);
   const bg = context.serviceWorkers()[0];
   const url = await bg.evaluate(async () => {

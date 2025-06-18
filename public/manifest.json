@@ -22,6 +22,6 @@
       "js": ["src/content/pinCreate.ts", "src/content/pinResolve.ts"]
     }
   ],
-  "permissions": ["storage", "tabs"],
+  "permissions": ["storage", "tabs", "contextMenus"],
   "host_permissions": ["<all_urls>"]
 }

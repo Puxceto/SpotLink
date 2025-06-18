@@ -1,0 +1,32 @@
+{
+  "name": "spotlink",
+  "version": "1.0.0",
+  "description": "Chrome extension to drop a pin on any spot and share a link to it.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build",
+    "build": "vite build",
+    "test": "jest"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.12.0"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.2",
+    "@types/chrome": "^0.0.275",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "jest": "^30.0.0",
+    "jest-environment-jsdom": "^30.0.0",
+    "jsdom": "^21.1.0",
+    "prettier": "^3.2.4",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.2.2",
+    "vite": "^6.3.5"
+  }
+}

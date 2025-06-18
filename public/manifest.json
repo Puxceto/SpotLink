@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "SpotLink",
+  "description": "Drop a pin on any spot in a page and share the link.",
+  "version": "1.0.0",
+  "icons": {
+    "128": "icons/spot.svg"
+  },
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "SpotLink",
+    "default_icon": "icons/spot.svg"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/pinResolve.ts"]
+    }
+  ],
+  "permissions": [],
+  "host_permissions": ["<all_urls>"]
+}

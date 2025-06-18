@@ -38,6 +38,14 @@ describe('locator engine', () => {
     expect(resolved).toBe(el);
   });
 
+  test('encodeDomFingerprint uses nth-of-type', async () => {
+    const dom = new JSDOM('<div><p>first</p><p>second</p></div>');
+    const doc = dom.window.document;
+    const el = doc.querySelectorAll('p')[1] as HTMLElement;
+    const fp = await encodeDomFingerprint(el);
+    expect(fp).toMatch(/p:nth-of-type\(2\)/);
+  });
+
   test('encodeViewportOffset', () => {
     const val = encodeViewportOffset(123.4);
     const loc = decodeLocator(val);

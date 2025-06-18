@@ -6,7 +6,7 @@ SpotLink lets you drop a pin on any spot in a web page and share a `#spot=` URL.
 
 ## Keyboard Shortcut
 
-Press **Ctrl+Shift+P** to create a pin for the current scroll position or selected element. The link is copied to your clipboard and stored locally.
+Press **Shift+P** to create a pin for the current scroll position or selected element. The link is copied to your clipboard and stored locally.
 
 ## Privacy Promise
 

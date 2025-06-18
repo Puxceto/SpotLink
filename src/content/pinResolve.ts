@@ -29,7 +29,7 @@ async function highlight(el: HTMLElement) {
 }
 
 async function observeAndResolve(locator: ReturnType<typeof decodeLocator>) {
-  let found = await resolveLocator(document, locator);
+  const found = await resolveLocator(document, locator);
   if (found) return found;
   return new Promise<HTMLElement | null>((resolve) => {
     const mo = new MutationObserver(async () => {

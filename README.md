@@ -1,8 +1,38 @@
 # SpotLink
 
-SpotLink is a Chrome-only extension that lets you drop a pin on any spot in any web page and share a `#spot=` URL. When opened by another SpotLink user, the page scrolls to and briefly highlights the spot.
+SpotLink lets you drop a pin on any spot in a web page and share a `#spot=` URL. When another SpotLink user opens the link, the page scrolls to and briefly highlights the spot.
 
-This repository contains the Stage 1 bootstrap of the project. Running the dev build produces an unpacked extension that logs **"SpotLink injected"** when loaded on any page.
+[Chrome Web Store](https://chrome.google.com/webstore/detail/spotlink/placeholder)
+
+## Keyboard Shortcut
+
+Press **Alt+P** to create a pin for the current scroll position or selected element. The link is copied to your clipboard and stored locally.
+
+## Privacy Promise
+
+SpotLink stores pins only in your browser using Chrome storage APIs. **No data ever leaves your browser.**
+
+## Local Architecture
+
+```
++-------------+       +------------+
+|  Content    |  <--->| Background |
+|  Scripts    |       |  Service   |
++-------------+       +------------+
+        |                   ^
+        v                   |
+  +-----------+       +-----------+
+  |  Popup &  |<----->|  Storage  |
+  |  Options  |       | (local)   |
+  +-----------+       +-----------+
+```
+
+## Loading the Extension
+
+1. `npm install`
+2. `npm run build`
+3. Open `chrome://extensions` in Chrome and enable Developer mode.
+4. Choose **Load unpacked** and select the `dist/chrome` directory.
 
 ## Development
 
@@ -10,8 +40,6 @@ This repository contains the Stage 1 bootstrap of the project. Running the dev b
 npm install
 npm run dev
 ```
-
-The build output appears in the `dist/` directory and can be loaded as an unpacked extension in Chrome.
 
 ## License
 

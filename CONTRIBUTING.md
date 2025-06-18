@@ -1,14 +1,29 @@
 # Contributing to SpotLink
 
-Thank you for taking the time to contribute! Please follow these guidelines:
+Thank you for helping make SpotLink better! Please follow the guidelines below.
 
-- Use TypeScript for all source files.
-- Ensure `npm test` passes before submitting PRs.
-- Keep the code free of external network calls.
+## Branch Strategy
 
-## Development Setup
+All development happens on `main`. Stable releases are tagged from `main` once a stage is complete.
+
+## Stages
+
+| Stage | Purpose                          |
+|------:|----------------------------------|
+| 1     | Initial bootstrap                |
+| 2     | Core functionality               |
+| 3     | UI polish                        |
+| 4     | Storage and options              |
+| 5     | Build pipeline & release prep    |
+
+## Running Tests
 
 ```bash
-npm install
-npm run dev
+npm run lint
+npm test
+npm run e2e
 ```
+
+## Commit Style
+
+Keep commits focused and descriptive. Use the imperative mood, e.g. `Add options page`.

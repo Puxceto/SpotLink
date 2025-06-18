@@ -7,7 +7,10 @@
   "scripts": {
     "dev": "vite build",
     "build": "vite build",
-    "test": "jest"
+    "lint": "eslint 'src/**/*.{ts,tsx}' tests --ext ts,tsx",
+    "test": "jest",
+    "e2e": "npm run build && playwright test",
+    "package": "npm run build && cd dist/chrome && zip -r ../spotlink-v$npm_package_version.zip ."
   },
   "dependencies": {
     "webextension-polyfill": "^0.12.0",
@@ -29,6 +32,7 @@
     "ts-jest": "^29.4.0",
     "typescript": "^5.2.2",
     "vite": "^6.3.5",
-    "@preact/preset-vite": "^2.2.0"
+    "@preact/preset-vite": "^2.2.0",
+    "@playwright/test": "^1.40.0"
   }
 }

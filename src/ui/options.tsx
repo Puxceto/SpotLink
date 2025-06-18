@@ -1,5 +1,5 @@
 /** Options UI using Preact and CSS Modules */
-import { h, render } from 'preact';
+import { render } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import styles from './options.module.css';
 

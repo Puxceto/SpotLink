@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { webcrypto as nodeCrypto } from 'crypto';
 (globalThis as any).crypto = nodeCrypto;
 import { TextEncoder, TextDecoder } from 'util';

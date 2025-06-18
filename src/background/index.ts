@@ -20,13 +20,17 @@ chrome.storage.onChanged.addListener((changes, area) => {
 
 chrome.action.onClicked.addListener((tab) => {
   if (tab.id !== undefined) {
-    chrome.tabs.sendMessage(tab.id, 'createPin');
+    chrome.tabs.sendMessage(tab.id, 'createPin').catch(() => {
+      /* ignore */
+    });
   }
 });
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === 'create-spotlink' && tab?.id !== undefined) {
-    chrome.tabs.sendMessage(tab.id, 'createPin');
+    chrome.tabs.sendMessage(tab.id, 'createPin').catch(() => {
+      /* ignore */
+    });
   }
 });
 

@@ -1,4 +1,9 @@
-// Locator library placeholder
-export function placeholder() {
-  return true;
-}
+export {
+  encodeNativeTextFragment,
+  encodeDomFingerprint,
+  encodeViewportOffset,
+  decodeLocator,
+  resolveLocator,
+} from './locator';
+
+export type { Locator } from './locator';

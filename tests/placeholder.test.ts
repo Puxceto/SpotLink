@@ -1,5 +1,5 @@
-import { placeholder } from '../src/common';
+import { encodeNativeTextFragment } from '../src/common';
 
-test('placeholder returns true', () => {
-  expect(placeholder()).toBe(true);
+test('module exports function', () => {
+  expect(typeof encodeNativeTextFragment).toBe('function');
 });

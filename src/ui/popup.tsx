@@ -57,11 +57,19 @@ function Popup() {
         {filtered.map((p) => (
           <li class={styles.item} key={p.created}>
             <img
-              src={`chrome://favicon/size/16/${new URL(p.url).origin}`}
+              src={`https://www.google.com/s2/favicons?sz=16&domain=${new URL(p.url).hostname}`}
               width="16"
               height="16"
             />
-            <span class={styles.title} title={p.title}>{p.title?.slice(0, 50)}</span>
+            <a
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={styles.title}
+              title={p.title}
+            >
+              {p.title?.slice(0, 50)}
+            </a>
             <span>{relativeAge(p.created)}</span>
             <span class={styles.buttons}>
               <button onClick={() => copy(p.url)}>Copy</button>

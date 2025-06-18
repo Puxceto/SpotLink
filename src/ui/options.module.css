@@ -1,0 +1,14 @@
+/* Using CSS Modules for styles */
+.container {
+  font-family: sans-serif;
+  padding: 12px;
+  width: 300px;
+}
+.row {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+.row label {
+  flex: 1;
+}

@@ -16,3 +16,12 @@ chrome.action.onClicked.addListener((tab) => {
     chrome.tabs.sendMessage(tab.id, 'createPin');
   }
 });
+
+chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
+  if (msg === 'getTabTitle') {
+    chrome.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
+      sendResponse({ title: tabs[0]?.title ?? '' });
+    });
+    return true;
+  }
+});

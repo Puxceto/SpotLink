@@ -10,7 +10,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "webextension-polyfill": "^0.12.0"
+    "webextension-polyfill": "^0.12.0",
+    "preact": "^10.19.2"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.2",
@@ -27,6 +28,7 @@
     "prettier": "^3.2.4",
     "ts-jest": "^29.4.0",
     "typescript": "^5.2.2",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "@preact/preset-vite": "^2.2.0"
   }
 }

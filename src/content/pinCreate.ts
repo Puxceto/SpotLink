@@ -4,14 +4,15 @@ import {
   encodeViewportOffset,
 } from '../common';
 
-type Pin = { url: string; locator: string; created: number };
+type Pin = { url: string; locator: string; created: number; title: string };
 
 async function pushPin(pin: Pin) {
   const { pins = [] } = await chrome.storage.local.get('pins');
   const list = Array.isArray(pins) ? pins : [];
+  const { maxPins = 50 } = await chrome.storage.sync.get('maxPins');
   list.push(pin);
-  if (list.length > 50) {
-    list.splice(0, list.length - 50);
+  if (list.length > maxPins) {
+    list.splice(0, list.length - maxPins);
   }
   await chrome.storage.local.set({ pins: list });
 }
@@ -49,13 +50,23 @@ async function generateLocator(): Promise<string> {
   return encodeViewportOffset(window.scrollY);
 }
 
+async function getCurrentTabTitle(): Promise<string> {
+  try {
+    const resp = await chrome.runtime.sendMessage('getTabTitle');
+    return resp?.title ?? document.title;
+  } catch {
+    return document.title;
+  }
+}
+
 export async function createPin() {
   const locator = await generateLocator();
   const url = `${location.origin}${location.pathname}#spot=${encodeURIComponent(
     locator
   )}`;
   await navigator.clipboard.writeText(url);
-  await pushPin({ url, locator, created: Date.now() });
+  const title = await getCurrentTabTitle();
+  await pushPin({ url, locator, created: Date.now(), title });
   showToast('SpotLink copied!');
 }
 

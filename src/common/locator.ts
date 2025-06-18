@@ -27,7 +27,17 @@ function cssPath(node: Element): string {
   let el: Element | null = node;
   while (el && el !== doc.body) {
     let part = el.nodeName.toLowerCase();
-    if ((el as HTMLElement).id) part += `#${(el as HTMLElement).id}`;
+    if ((el as HTMLElement).id) {
+      part += `#${(el as HTMLElement).id}`;
+    } else if (el.parentElement) {
+      const siblings = Array.from(el.parentElement.children).filter(
+        (sib) => sib.nodeName.toLowerCase() === part
+      );
+      if (siblings.length > 1) {
+        const index = siblings.indexOf(el) + 1;
+        part += `:nth-of-type(${index})`;
+      }
+    }
     parts.unshift(part);
     el = el.parentElement;
   }

@@ -5,4 +5,8 @@ import manifest from './public/manifest.json' assert { type: 'json' };
 
 export default defineConfig({
   plugins: [preact(), crx({ manifest })],
+  build: {
+    outDir: 'dist/chrome',
+    emptyOutDir: true,
+  },
 });

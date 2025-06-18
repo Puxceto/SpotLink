@@ -11,8 +11,12 @@ function base64UrlFromBuffer(buffer: ArrayBuffer): string {
 }
 async function sha256Base64Url(text: string): Promise<string> {
   const data = new TextEncoder().encode(text);
-  const cryptoMod: any = globalThis.crypto?.subtle ? null : await import("crypto");
-  const subtle: SubtleCrypto = (globalThis.crypto?.subtle ?? cryptoMod.webcrypto.subtle) as SubtleCrypto;
+  const cryptoMod: (typeof import('crypto')) | null = globalThis.crypto?.subtle
+    ? null
+    : await import('crypto');
+  const subtle: SubtleCrypto = (
+    globalThis.crypto?.subtle ?? cryptoMod!.webcrypto.subtle
+  ) as SubtleCrypto;
   const hash = await subtle.digest("SHA-256", data);
   return base64UrlFromBuffer(hash);
 }

@@ -7,6 +7,10 @@ import {
 type Pin = { url: string; locator: string; created: number; title: string };
 
 async function pushPin(pin: Pin) {
+  if (!chrome.storage?.local) {
+    console.warn('chrome.storage not available');
+    return;
+  }
   const { pins = [] } = await chrome.storage.local.get('pins');
   const list = Array.isArray(pins) ? pins : [];
   const { maxPins = 50 } = await chrome.storage.sync.get('maxPins');

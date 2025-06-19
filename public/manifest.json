@@ -19,7 +19,8 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["src/content/pinCreate.ts", "src/content/pinResolve.ts"]
+      "js": ["src/content/pinCreate.ts", "src/content/pinResolve.ts"],
+      "world": "ISOLATED"
     }
   ],
   "permissions": ["storage", "tabs", "contextMenus"],

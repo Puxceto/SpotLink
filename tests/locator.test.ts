@@ -43,7 +43,7 @@ describe('locator engine', () => {
     const doc = dom.window.document;
     const el = doc.querySelectorAll('p')[1] as HTMLElement;
     const fp = await encodeDomFingerprint(el);
-    expect(fp).toMatch(/p:nth-of-type\(2\)/);
+    expect(fp).toMatch(/div:nth-of-type\(1\) > p:nth-of-type\(2\)/);
   });
 
   test('encodeViewportOffset', () => {
@@ -96,5 +96,17 @@ describe('locator engine', () => {
     const loc = { type: 'text', fragment: '#:~:text=missing' } as const;
     const el = await resolveLocator(doc, loc);
     expect(el).toBeNull();
+  });
+
+  test('resolveLocator falls back to hash search', async () => {
+    const dom = new JSDOM('<div><p id="a">one</p><p id="b">two</p></div>');
+    const doc = dom.window.document;
+    const el = doc.getElementById('b') as HTMLElement;
+    const fp = await encodeDomFingerprint(el);
+    const [path, hash] = fp.split('|');
+    const badPath = path.replace('nth-of-type(2)', 'nth-of-type(1)');
+    const locator = { type: 'fingerprint', path: badPath, hash } as const;
+    const found = await resolveLocator(doc, locator);
+    expect(found).toBe(el);
   });
 });

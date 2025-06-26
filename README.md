@@ -2,7 +2,7 @@
 
 SpotLink lets you drop a pin on any spot in a web page and share a `#spot=` URL. When another SpotLink user opens the link, the page scrolls to and briefly highlights the spot.
 
-[Chrome Web Store](https://chrome.google.com/webstore/detail/spotlink/placeholder)
+[[Chrome Web Store](https://chrome.google.com/webstore/detail/spotlink/placeholder)](https://chromewebstore.google.com/detail/spotlink/bkjdfmegdaondmgakdhkejialdcgbbpm?authuser=0&hl=en-GB)
 
 ## Keyboard Shortcut
 
